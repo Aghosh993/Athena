@@ -16,22 +16,24 @@ Now, download the GCC ARM toolchain for Windows from: https://launchpad.net/gcc-
 
 Unzip this archive, and move the resulting folder to some directory on your machine. For the purpose of this procedure, let that directory be C:\Users\some_user\sandbox. Rename the GCC folder to "gcc-arm-none-eabi-5_4-2016q3".
 
-Now, go to https://github.com/Aghosh993/EL6483_EmbeddedSystems and download the repository as a Zip file by selecting "Clone or Download" -> "Download ZIP"
+Now, go to https://github.com/Aghosh993/Athena and download the repository as a Zip file by selecting "Clone or Download" -> "Download ZIP"
 
-Extract the resultant folder to "C:\Users\some_user\sandbox" when prompted to tell the unzip utility where to extract to (under "Files will be extraced to this folder:"). There should now be a "EL6483_EmbeddedSystems-master" folder within the sandbox folder. Rename it so there is no "-master" on the end.
+Extract the resultant folder to "C:\Users\some_user\sandbox" when prompted to tell the unzip utility where to extract to (under "Files will be extraced to this folder:"). There should now be a "Athena-master" folder within the sandbox folder. Rename it so there is no "-master" on the end.
 
 Now, launch the MSYS Shell. Go to the Start menu, type "msys". The "MSYS2 MinGW 32-bit" option should pop up. Click it, and the shell will launch.
 
 First, we will use the built-in package manager to update the system. Type "pacman -Syu". If prompted to allow installation, type Y" and then press Enter. Once the update is finished, you will be prompted to exit. Just close the window, and click "OK" if warned that a process is still running. Re-launch the Msys shell as mentioned before.
 
-Once at the shell, type: "pacman -S make". If prompted to allow installation, type Y" and then press Enter. Once the command finishes and returns to the prompt, type: "cd C:\Users" then type: "cd some_user/sandbox/EL6483_EmbeddedSystems/build_tools/arctic_awesomeness".
+Once at the shell, type: "pacman -S make". If prompted to allow installation, type Y" and then press Enter. Once the command finishes and returns to the prompt, type: "cd C:\Users" then type: "cd some_user/sandbox/Athena/linux".
 
 Now, you should be able to auto-create a new project. Type: "./mkproject.sh test f3" (for F3 discovery) or "./mkproject.sh test f4" for the F4 Discovery board. This will automatically create a new project in a sub-folder called "test" with the necessary Makefile and source code.
 
 Now, change directories into the test project by typing: "cd test". Build the code with "make". You will see a bunch of output, followed by an indication of the final size of the binary file containing the executable code.
 
-Now you are ready to actually load the code onto the STM32 board. Connect it to your PC with a mini-USB cable. You should see a notification that the driver was successfully installed. Launch the ST-Link utility (you should be able to see it when you search for it from the Start menu). Go to "Target" and click "Connect". You should be connected to the board now. Go to "File"->"Open File" and navigate to C:\Users\some_user\sandbox\EL6483_EmbeddedSystems\build_tools\arctic_awesomeness\test. You should see "test.bin" as one of the available files. Select it and double-click. Now, go to "Target"->"Program" and click "Start". THe chip should be programmed and running the firmware. 
+## Instructions for loading code onto STM32 + ST-Link systems:
+
+Now you are ready to actually load the code onto the STM32 board. Connect it to your PC with a mini-USB cable. You should see a notification that the driver was successfully installed. Launch the ST-Link utility (you should be able to see it when you search for it from the Start menu). Go to "Target" and click "Connect". You should be connected to the board now. Go to "File"->"Open File" and navigate to C:\Users\some_user\sandbox\Athena\linux\test. You should see "test.bin" as one of the available files. Select it and double-click. Now, go to "Target"->"Program" and click "Start". THe chip should be programmed and running the firmware. 
 
 Any time you re-compile the code in a project, just re-open the binary using the above instructions, and re-flash. Enjoy!
 
-(c) Abhimanyu Ghosh, 2016
+(c) Abhimanyu Ghosh, 2017
