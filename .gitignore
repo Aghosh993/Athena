@@ -1,0 +1,11 @@
+*.o
+*.elf
+*.srec
+*.map
+*.bin
+*.d
+*.tar
+*.zip
+*.tar.bz2
+*.tar.gz
+test/
