@@ -1,5 +1,0 @@
--Iuser_include
--Iuser_include/hal_interface
--I../../arch/tivare_tm4c
--I../../arch/tivare_tm4c/driverlib
--I../../arch/tivare_tm4c/inc
