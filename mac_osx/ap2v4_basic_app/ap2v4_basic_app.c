@@ -1,8 +1,8 @@
 /*
-	This is the main user software application
-	In this case, we have below the code necessary to toggle a set of LEDs on a	STM32 F3 Discovery PCB at 20 Hz.
+  This is the main user software application
+  In this case, we have below the code necessary to toggle a set of LEDs on an RM48L950-based autopilot PCB at 20 Hz.
 
-	(c) Abhimanyu Ghosh, 2017
+  (c) Abhimanyu Ghosh, 2017
  */
 
 #include "cpu.h"

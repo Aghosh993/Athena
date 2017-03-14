@@ -10,6 +10,8 @@ Currently supports:
 
 - TM4C123Gx Launchpad (Not tested with an actual Launchpad, but tests with similar board work)
 
+- Hercules RM48L950-based custom autopilot target via JTAG
+
 This build system is for use on Linux systems. Some distributions may need minor modifications.
 
 Tested distros: Arch Linux, Xubuntu, Ubuntu
