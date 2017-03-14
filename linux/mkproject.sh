@@ -25,6 +25,10 @@ if [ "$2" = "tm4c" ] || [ "$2" = "TM4C" ]; then
 	echo "Creating TM4C Tiva Launchpad project..."
 	BASE_PROJ_NAME=tm4c_launchpad_basic_app
 fi
+if [ "$2" = "ap2v4" ] || [ "$2" = "AP2V4" ]; then
+	echo "Creating an RM48 Autopilot 2.4 project..."
+	BASE_PROJ_NAME=ap2v4_basic_app
+fi
 
 cp -r $BASE_PROJ_NAME $PROJ_NAME
 mv $PROJ_NAME/$BASE_PROJ_NAME.c $PROJ_NAME/$PROJ_NAME.c

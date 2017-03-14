@@ -1,0 +1,3 @@
+-Iuser_include
+-Iuser_include/hal_interface
+-I../../board/ap2v4_rm48l950/inc
