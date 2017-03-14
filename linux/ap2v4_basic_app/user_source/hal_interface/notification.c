@@ -60,10 +60,6 @@
 #include "i2c.h"
 #include "sys_dma.h"
 
-// #include "interrupts.h"
-
-// #include "sys_leds.h"
-
 /* USER CODE BEGIN (0) */
 /* USER CODE END */
 void esmGroup1Notification(uint32 channel)
@@ -139,20 +135,6 @@ void canMessageNotification(canBASE_t *node, uint32 messageBox)
 {
 /*  enter user code between the USER CODE BEGIN and USER CODE END. */
 /* USER CODE BEGIN (15) */
-	// if(node == canREG3 && messageBox == canMESSAGE_BOX1)
-	// {
-	// 	can_tm4c_port1_rx_message_callback();
-	// }
-
-	// if(node == canREG3 && messageBox == canMESSAGE_BOX2)
-	// {
-	// 	can_tm4c_port2_rx_message_callback();
-	// }
-
-	// if(node == canREG3 && messageBox == canMESSAGE_BOX3)
-	// {
-	// 	can_tm4c_port3_rx_message_callback();
-	// }
 /* USER CODE END */
 }
 
@@ -198,29 +180,6 @@ void sciNotification(sciBASE_t *sci, uint32 flags)
 {
 /*  enter user code between the USER CODE BEGIN and USER CODE END. */
 /* USER CODE BEGIN (29) */
-	// if(sci == sciREG)
-	// {
-	// 	if(flags & SCI_RX_INT)
-	// 	{
-	// 		sci1_rx_callback();
-	// 	}
-	// 	else if(flags & SCI_TX_INT)
-	// 	{
-	// 		sci1_tx_callback();
-	// 	}
-	// }
-
-	// if(sci == scilinREG)
-	// {
-	// 	if(flags & SCI_RX_INT)
-	// 	{
-	// 		sci2_rx_callback();
-	// 	}
-	// 	if(flags & SCI_TX_INT)
-	// 	{
-	// 		sci2_tx_callback();
-	// 	}
-	// }
 /* USER CODE END */
 }
 
@@ -231,10 +190,6 @@ void pwmNotification(hetBASE_t * hetREG,uint32 pwm, uint32 notification)
 {
 /*  enter user code between the USER CODE BEGIN and USER CODE END. */
 /* USER CODE BEGIN (35) */
-	// if(notification == pwmEND_OF_PERIOD)
-	// {
-	// 	pwm_callback(hetREG, pwm);
-	// }
 /* USER CODE END */
 }
 

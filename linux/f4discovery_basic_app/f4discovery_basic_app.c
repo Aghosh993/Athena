@@ -5,7 +5,7 @@
   (c) Abhimanyu Ghosh, 2017
  */
 
-#include "cpu.h"
+#include "cpu_hal_interface.h"
 #include "board_led.h"
 
 #include "foo.h"

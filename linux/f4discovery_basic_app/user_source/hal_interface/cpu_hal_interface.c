@@ -1,4 +1,4 @@
-#include "cpu.h"
+#include "cpu_hal_interface.h"
 
 /*
 	A simple error handler that just blocks indefinitely until a HW reset:
