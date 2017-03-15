@@ -18,7 +18,15 @@ fi
 
 
 mv $OLD_PROJ_NAME $NEW_PROJ_NAME
-mv $NEW_PROJ_NAME/$OLD_PROJ_NAME.c $NEW_PROJ_NAME/$NEW_PROJ_NAME.c
+if [ -f $NEW_PROJ_NAME/$OLD_PROJ_NAME.c ]; then
+	mv $NEW_PROJ_NAME/$OLD_PROJ_NAME.c $NEW_PROJ_NAME/$NEW_PROJ_NAME.c
+else
+	if [ -f $NEW_PROJ_NAME/$OLD_PROJ_NAME.s ]; then
+		mv $NEW_PROJ_NAME/$OLD_PROJ_NAME.s $NEW_PROJ_NAME/$NEW_PROJ_NAME.s
+	else
+		echo "WARNING: No valid source file found for user app!!"
+	fi
+fi
 echo $NEW_PROJ_NAME > $NEW_PROJ_NAME/proj_name
 sed -i '' "s/$OLD_PROJ_NAME/$NEW_PROJ_NAME/g" $NEW_PROJ_NAME/runme.gdb
 sed -i '' "s/$OLD_PROJ_NAME/$NEW_PROJ_NAME/g" $NEW_PROJ_NAME/Makefile

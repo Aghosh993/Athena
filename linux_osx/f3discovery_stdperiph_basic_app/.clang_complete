@@ -1,0 +1,4 @@
+-Iuser_include
+-Iuser_include/hal_interface
+-I../../arch/stm32_stdperiph/f3/inc
+-I../../arch/stm32_stdperiph/f3/inc/CMSIS
