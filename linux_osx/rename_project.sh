@@ -28,5 +28,5 @@ else
 	fi
 fi
 echo $NEW_PROJ_NAME > $NEW_PROJ_NAME/proj_name
-sed -i "s/$OLD_PROJ_NAME/$NEW_PROJ_NAME/g" $NEW_PROJ_NAME/runme.gdb
+sed -i "s/$OLD_PROJ_NAME/$NEW_PROJ_NAME/g" $NEW_PROJ_NAME/runme*.gdb
 sed -i "s/$OLD_PROJ_NAME/$NEW_PROJ_NAME/g" $NEW_PROJ_NAME/Makefile

@@ -1,3 +1,6 @@
 [submodule "arch/libopencm3"]
 	path = arch/libopencm3
 	url = https://github.com/libopencm3/libopencm3
+[submodule "arm-none-eabi-gcc_5_4_BE"]
+	path = arm-none-eabi-gcc_5_4_BE
+	url = https://github.com/Aghosh993/arm-none-eabi-gcc_5_4_BE.git

@@ -1,13 +1,14 @@
 # Based on https://github.com/sergioprado/bare-metal-arm/blob/master/Makefile
 # But heavily-edited for our purposes:
 # (c) Abhimanyu Ghosh, 2016
-TOOLCHAIN_ROOT=../../../gcc-arm-none-eabi-4_7-2012q4
+ATHENA_PATH=athroot
+TOOLCHAIN_ROOT=$(ATHENA_PATH)/arm-none-eabi-gcc_5_4_BE/gcc-arm-none-eabi-5_4-2017q1_BE_LINUX
 TOOLCHAIN=$(TOOLCHAIN_ROOT)/bin/
 JLINK_PATH=../../../JLink_Linux_V480_x86_64
 PREFIX=$(TOOLCHAIN)/arm-none-eabi-
 
 ARCHFLAGS=-mcpu=cortex-m4 -mthumb -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -I$(TOOLCHAIN_ROOT)/arm-none-eabi/include -fsingle-precision-constant 
-CFLAGS=-nostdlib -I../../arch/tivaware_tm4c/ -I../../arch/tivaware_tm4c/inc/ -I../../arch/tivaware_tm4c/driverlib/ -I./user_include -I./user_include/hal_interface -g -O2 -Wall -Dgcc -DTARGET_IS_TM4C123_RA3 -DPART_TM4C123GE6PM
+CFLAGS=-nostdlib -ffunction-sections -I$(ATHENA_PATH)/arch/tivaware_tm4c/ -I$(ATHENA_PATH)/arch/tivaware_tm4c/inc/ -I$(ATHENA_PATH)/arch/tivaware_tm4c/driverlib/ -I./user_include -I./user_include/hal_interface -g -O2 -Wall -Dgcc -DTARGET_IS_TM4C123_RA3 -DPART_TM4C123GH6PM
 LDFLAGS=-Wl,--gc-sections,-Map,$(TARGET).map,-Tlinker.ld --entry ResetISR
 LDFLAGS+=$(ARCHFLAGS)
 
@@ -19,8 +20,8 @@ RM=rm -f
 
 TARGET=tm4c_launchpad_basic_app
 
-SRC=$(wildcard ../../arch/tivaware_tm4c/driverlib/*.c)
-ASM_SRC=$(wildcard ../../arch/tivaware_tm4c/driverlib/*.s)
+SRC=$(wildcard $(ATHENA_PATH)/arch/tivaware_tm4c/driverlib/*.c)
+ASM_SRC=$(wildcard $(ATHENA_PATH)/arch/tivaware_tm4c/driverlib/*.s)
 USER_SRC=startup_gcc.c
 USER_SRC+=$(wildcard user_source/*.c)
 USER_SRC+=$(wildcard user_source/hal_interface/*.c)
@@ -45,6 +46,10 @@ md5sums: all
 	md5sum $(TARGET).elf > user_app_md5sum
 check: all
 	md5sum $(TARGET).elf > tmp && diff tmp user_app_md5sum && rm tmp
+
+icdi: all
+	./load_fw_icdi.sh $(TOOLCHAIN)
+
 jtag: all
 	./load_fw.sh $(JLINK_PATH) $(TOOLCHAIN)
 

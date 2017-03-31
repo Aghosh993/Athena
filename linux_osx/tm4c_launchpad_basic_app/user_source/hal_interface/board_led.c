@@ -2,10 +2,10 @@
 
 void board_led_init(void)
 {
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOK);
-    while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOK));
-    GPIOPinTypeGPIOOutput(GPIO_PORTK_BASE, GPIO_PIN_0);
-    GPIOPinWrite(GPIO_PORTK_BASE, GPIO_PIN_0, GPIO_PIN_0);
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
+    while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF));
+    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3);
+    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 , 0);
 }
 
 void board_led_on(led led_id)
@@ -13,10 +13,13 @@ void board_led_on(led led_id)
 	switch(led_id)
 	{
 		case LED1:
-			GPIOPinWrite(GPIO_PORTK_BASE, GPIO_PIN_0, GPIO_PIN_0);
+			GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, GPIO_PIN_1);
 			break;
 		case LED2:
-			// HAL_GPIO_WritePin(GPIOE, GPIO_PIN_9, GPIO_PIN_SET);
+			GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, GPIO_PIN_2);
+			break;
+		case LED3:
+			GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, GPIO_PIN_3);
 			break;
 	}
 }
@@ -26,10 +29,13 @@ void board_led_off(led led_id)
 	switch(led_id)
 	{
 		case LED1:
-			ROM_GPIOPinWrite(GPIO_PORTK_BASE, GPIO_PIN_0, 0);
+			GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0);
 			break;
 		case LED2:
-			// HAL_GPIO_WritePin(GPIOE, GPIO_PIN_9, GPIO_PIN_RESET);
+			GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0);
+			break;
+		case LED3:
+			GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0);
 			break;
 	}
 }
@@ -39,10 +45,13 @@ void board_led_toggle(led led_id)
 	switch(led_id)
 	{
 		case LED1:
-			// HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_8);
+			GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_1) ^ GPIO_PIN_1);
 			break;
 		case LED2:
-			// HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_9);
+			GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_2) ^ GPIO_PIN_2);
+			break;
+		case LED3:
+			GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_3) ^ GPIO_PIN_3);
 			break;
 	}
 }

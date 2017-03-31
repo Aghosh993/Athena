@@ -1,12 +1,13 @@
 # Based on https://github.com/sergioprado/bare-metal-arm/blob/master/Makefile
 # But heavily-edited for our purposes:
 # (c) Abhimanyu Ghosh, 2016
-TOOLCHAIN_ROOT=../../../gcc-arm-none-eabi-5_4-2016q3
+ATHENA_PATH=athroot
+TOOLCHAIN_ROOT=$(ATHENA_PATH)/arm-none-eabi-gcc_5_4_BE/gcc-arm-none-eabi-5_4-2017q1_BE_LINUX
 TOOLCHAIN=$(TOOLCHAIN_ROOT)/bin/
 PREFIX=$(TOOLCHAIN)/arm-none-eabi-
 
 ARCHFLAGS=-mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -I$(TOOLCHAIN_ROOT)/arm-none-eabi/include -fsingle-precision-constant 
-CFLAGS=-nostdlib -I../../arch/stm32_stdperiph/f3/inc/ -I../../arch/stm32_stdperiph/f3/inc/CMSIS -I./user_include -I./user_include/hal_interface -DSTM32F30X -g -O2 -Wall
+CFLAGS=-nostdlib -ffunction-sections -I$(ATHENA_PATH)/arch/stm32_stdperiph/f3/inc/ -I$(ATHENA_PATH)/arch/stm32_stdperiph/f3/inc/CMSIS -I./user_include -I./user_include/hal_interface -DSTM32F30X -g -O2 -Wall
 LDFLAGS=--specs=nosys.specs -Wl,--gc-sections,-Map,$(TARGET).map,-Tlinker.ld
 LDFLAGS+=$(ARCHFLAGS)
 
@@ -18,10 +19,10 @@ RM=rm -f
 
 TARGET=f3discovery_stdperiph_basic_app
 
-SRC=$(wildcard ../../arch/stm32_stdperiph/f3/src/*.c)
-SRC+=$(wildcard ../../arch/stm32_stdperiph/f3/src/CMSIS/*.c)
-ASM_SRC=$(wildcard ../../arch/stm32_stdperiph/f3/src/*.s)
-ASM_SRC+=$(wildcard ../../arch/stm32_stdperiph/f3/src/CMSIS/*.s)
+SRC=$(wildcard $(ATHENA_PATH)/arch/stm32_stdperiph/f3/src/*.c)
+SRC+=$(wildcard $(ATHENA_PATH)/arch/stm32_stdperiph/f3/src/CMSIS/*.c)
+ASM_SRC=$(wildcard $(ATHENA_PATH)/arch/stm32_stdperiph/f3/src/*.s)
+ASM_SRC+=$(wildcard $(ATHENA_PATH)/arch/stm32_stdperiph/f3/src/CMSIS/*.s)
 USER_SRC=$(wildcard user_source/*.c)
 USER_SRC+=$(wildcard user_source/hal_interface/*.c)
 USER_ASM_SRC=$(wildcard user_source/*.s)

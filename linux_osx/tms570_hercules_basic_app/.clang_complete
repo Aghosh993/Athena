@@ -1,0 +1,3 @@
+-Iuser_include
+-Iuser_include/hal_interface
+-I../../board/hercules_tms570LS12x/inc

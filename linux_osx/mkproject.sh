@@ -22,7 +22,7 @@ if [ "$2" = "F3" ] || [ "$2" = "f3" ]; then
 fi
 if [ "$2" = "F3_STDPERIPH" ] || [ "$2" = "f3_stdperiph" ]; then
 	echo "Creating F3 Discovery Standard Peripheral Library project..."
-	BASE_PROJ_NAME=f3discovery_stdperiph_basic_app
+	BASE_PROJ_NAME=f3discovery_s tdperiph_basic_app
 fi
 if [ "$2" = "F4" ] || [ "$2" = "f4" ]; then
 	echo "Creating F4 Discovery project..."
@@ -41,13 +41,27 @@ if [ "$2" = "ap2v4" ] || [ "$2" = "AP2V4" ]; then
 	BASE_PROJ_NAME=ap2v4_basic_app
 fi
 
+if [ "$2" = "tms570" ] || [ "$2" = "TMS570" ]; then
+	echo "Creating a TMS570 Launchpad project..."
+	BASE_PROJ_NAME=tms570_hercules_basic_app
+fi
+
 if [ -v $BASE_PROJ_NAME ]; then
 	echo "ERROR: No valid target selected!!"
 	exit 0
 fi
 
+PROJ_BASE_NAME=`basename $PROJ_NAME`
+ATHENA_RELPATH=`realpath --relative-to=$PROJ_NAME ..`
+
+echo "Creating project with name:"
+echo $PROJ_BASE_NAME
+echo "Relative path:"
+echo $ATHENA_RELPATH
+
 cp -r $BASE_PROJ_NAME $PROJ_NAME
-mv $PROJ_NAME/$BASE_PROJ_NAME.c $PROJ_NAME/$PROJ_NAME.c
-echo $PROJ_NAME > $PROJ_NAME/proj_name
-sed -i "s/$BASE_PROJ_NAME/$PROJ_NAME/g" $PROJ_NAME/runme.gdb
-sed -i "s/$BASE_PROJ_NAME/$PROJ_NAME/g" $PROJ_NAME/Makefile
+mv $PROJ_NAME/$BASE_PROJ_NAME.c $PROJ_NAME/$PROJ_BASE_NAME.c
+echo $PROJ_BASE_NAME > $PROJ_NAME/proj_name
+sed -i "s/$BASE_PROJ_NAME/$PROJ_BASE_NAME/g" $PROJ_NAME/runme*.gdb
+sed -i "s/$BASE_PROJ_NAME/$PROJ_BASE_NAME/g" $PROJ_NAME/Makefile
+sed -i "s|athroot|$ATHENA_RELPATH|g" $PROJ_NAME/Makefile

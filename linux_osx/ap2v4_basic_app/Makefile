@@ -1,13 +1,14 @@
 # Based on https://github.com/sergioprado/bare-metal-arm/blob/master/Makefile
 # But heavily-edited for our purposes:
 # (c) Abhimanyu Ghosh, 2016
-TOOLCHAIN_ROOT=../../../gcc-arm-none-eabi-5_4-2016q3
+ATHENA_PATH=athroot
+TOOLCHAIN_ROOT=$(ATHENA_PATH)/arm-none-eabi-gcc_5_4_BE/gcc-arm-none-eabi-5_4-2017q1_BE_LINUX
 TOOLCHAIN=$(TOOLCHAIN_ROOT)/bin/
 JLINK_PATH=../../../JLink_Linux_V480_x86_64
 PREFIX=$(TOOLCHAIN)/arm-none-eabi-
 
 ARCHFLAGS=-mcpu=cortex-r4f -march=armv7-r -mfloat-abi=soft -mfpu=vfpv3-d16 -I$(TOOLCHAIN_ROOT)/arm-none-eabi/include -fsingle-precision-constant 
-CFLAGS=-nostdlib -I../../board/ap2v4_rm48l950/inc/ -I./user_include -I./user_include/hal_interface -g -O2 -Wall
+CFLAGS=-nostdlib -ffunction-sections -I$(ATHENA_PATH)/board/ap2v4_rm48l950/inc/ -I./user_include -I./user_include/hal_interface -g -O2 -Wall
 LDFLAGS=--specs=nosys.specs -Wl,--gc-sections,-Map,$(TARGET).map,-Tlinker.ld
 LDFLAGS+=$(ARCHFLAGS)
 
@@ -19,8 +20,8 @@ RM=rm -f
 
 TARGET=ap2v4_basic_app
 
-SRC=$(wildcard ../../board/ap2v4_rm48l950/src/*.c)
-ASM_SRC=$(wildcard ../../board/ap2v4_rm48l950/src/*.s)
+SRC=$(wildcard $(ATHENA_PATH)/board/ap2v4_rm48l950/src/*.c)
+ASM_SRC=$(wildcard $(ATHENA_PATH)/board/ap2v4_rm48l950/src/*.s)
 USER_SRC=$(wildcard user_source/*.c)
 USER_SRC+=$(wildcard user_source/hal_interface/*.c)
 USER_ASM_SRC=$(wildcard user_source/*.s)

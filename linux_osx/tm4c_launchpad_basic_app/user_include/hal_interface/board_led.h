@@ -8,7 +8,8 @@
 
 typedef enum {
 	LED1,
-	LED2
+	LED2,
+	LED3
 } led;
 
 void board_led_init(void);
