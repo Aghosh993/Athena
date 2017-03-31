@@ -23,20 +23,6 @@ fi
 
 $PKG_MGR_CMD
 
-if [ -f gcc-arm-none-eabi-5_4-2016q3-20160926-linux.tar.bz2 ]; then
-	if ! [ -d ../../../gcc-arm-none-eabi-5_4-2016q3 ]; then
-		tar xvf gcc-arm-none-eabi-5_4-2016q3-20160926-linux.tar.bz2 -C ../../../
-		rm gcc-arm-none-eabi-5_4-2016q3-20160926-linux.tar.bz2
-	fi
-else
-	if ! [ -d ../../../gcc-arm-none-eabi-5_4-2016q3 ]; then
-		echo "Downloading and extracting toolchain..."
-		wget https://launchpad.net/gcc-arm-embedded/5.0/5-2016-q3-update/+download/gcc-arm-none-eabi-5_4-2016q3-20160926-linux.tar.bz2
-		tar xvf gcc-arm-none-eabi-5_4-2016q3-20160926-linux.tar.bz2 -C ../../../
-		rm gcc-arm-none-eabi-5_4-2016q3-20160926-linux.tar.bz2
-	fi
-fi
-
 echo "Downloading OpenOCD..."
 wget https://superb-dca2.dl.sourceforge.net/project/openocd/openocd/0.10.0/openocd-0.10.0.tar.bz2
 tar xvf openocd-0.10.0.tar.bz2
