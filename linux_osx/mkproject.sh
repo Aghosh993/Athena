@@ -22,7 +22,7 @@ if [ "$2" = "F3" ] || [ "$2" = "f3" ]; then
 fi
 if [ "$2" = "F3_STDPERIPH" ] || [ "$2" = "f3_stdperiph" ]; then
 	echo "Creating F3 Discovery Standard Peripheral Library project..."
-	BASE_PROJ_NAME=f3discovery_s tdperiph_basic_app
+	BASE_PROJ_NAME=f3discovery_stdperiph_basic_app
 fi
 if [ "$2" = "F4" ] || [ "$2" = "f4" ]; then
 	echo "Creating F4 Discovery project..."
