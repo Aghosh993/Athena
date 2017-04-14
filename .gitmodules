@@ -4,3 +4,6 @@
 [submodule "arm-none-eabi-gcc_5_4_BE"]
 	path = arm-none-eabi-gcc_5_4_BE
 	url = https://github.com/Aghosh993/arm-none-eabi-gcc_5_4_BE.git
+[submodule "arm-none-eabi-gcc_4_9_BE"]
+	path = arm-none-eabi-gcc_4_9_BE
+	url = https://github.com/Aghosh993/arm-none-eabi-gcc_4_9_BE.git
