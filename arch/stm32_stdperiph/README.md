@@ -1,0 +1,3 @@
+# STM32 Standard Peripheral HAL (Hardware Abstraction Layer)
+
+This directory contains the STDPeripheral (Standard Peripheral) HAL for the STM32 F3 and F4 line of microcontrollers. This HAL is the older codebase provided by ST and has been superseded by the Cube HAL which is in the stm32/ directory one level up. However, some may still prefer use of this HAL for coding style reasons and to maintain compatibility with legacy code.

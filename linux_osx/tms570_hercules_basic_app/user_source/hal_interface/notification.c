@@ -50,9 +50,12 @@
 
 #include "esm.h"
 #include "sys_selftest.h"
+#include "can.h"
 #include "gio.h"
 #include "sci.h"
+#include "spi.h"
 #include "rti.h"
+#include "i2c.h"
 #include "sys_dma.h"
 
 /* USER CODE BEGIN (0) */
@@ -102,6 +105,29 @@ void rtiNotification(uint32 notification)
 
 /* USER CODE BEGIN (10) */
 /* USER CODE END */
+void canErrorNotification(canBASE_t *node, uint32 notification)
+{
+/*  enter user code between the USER CODE BEGIN and USER CODE END. */
+/* USER CODE BEGIN (13) */
+/* USER CODE END */
+}
+
+void canStatusChangeNotification(canBASE_t *node, uint32 notification)  
+{
+/*  enter user code between the USER CODE BEGIN and USER CODE END. */
+/* USER CODE BEGIN (14) */
+/* USER CODE END */
+}
+
+void canMessageNotification(canBASE_t *node, uint32 messageBox)  
+{
+/*  enter user code between the USER CODE BEGIN and USER CODE END. */
+/* USER CODE BEGIN (15) */
+/* USER CODE END */
+}
+
+/* USER CODE BEGIN (16) */
+/* USER CODE END */
 void gioNotification(gioPORT_t *port, uint32 bit)
 {
 /*  enter user code between the USER CODE BEGIN and USER CODE END. */
@@ -110,6 +136,15 @@ void gioNotification(gioPORT_t *port, uint32 bit)
 }
 
 /* USER CODE BEGIN (20) */
+/* USER CODE END */
+void i2cNotification(i2cBASE_t *i2c, uint32 flags)      
+{
+/*  enter user code between the USER CODE BEGIN and USER CODE END. */
+/* USER CODE BEGIN (21) */
+/* USER CODE END */
+}
+
+/* USER CODE BEGIN (22) */
 /* USER CODE END */
 
 void sciNotification(sciBASE_t *sci, uint32 flags)     
@@ -120,6 +155,24 @@ void sciNotification(sciBASE_t *sci, uint32 flags)
 }
 
 /* USER CODE BEGIN (30) */
+/* USER CODE END */
+void spiNotification(spiBASE_t *spi, uint32 flags)
+{
+/*  enter user code between the USER CODE BEGIN and USER CODE END. */
+/* USER CODE BEGIN (31) */
+/* USER CODE END */
+}
+
+/* USER CODE BEGIN (32) */
+/* USER CODE END */
+void spiEndNotification(spiBASE_t *spi)
+{
+/*  enter user code between the USER CODE BEGIN and USER CODE END. */
+/* USER CODE BEGIN (33) */
+/* USER CODE END */
+}
+
+/* USER CODE BEGIN (34) */
 /* USER CODE END */
 
 
