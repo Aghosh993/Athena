@@ -48,6 +48,8 @@ check: all
 	md5sum $(TARGET).elf > tmp && diff tmp user_app_md5sum && rm tmp
 load: all
 	./load_fw.sh $(TOOLCHAIN)
+dfu: all
+	dfu-util -a 0 --dfuse-address 0x08000000 -D $(TARGET).bin
 
 clean:
 	$(RM) $(TARGET_OBJ) $(TARGET).srec $(TARGET).elf $(TARGET).bin $(TARGET).map $(USER_ASM_OBJ) $(USER_OBJ) $(USER_DEPS) $(TARGET_DEPS)
