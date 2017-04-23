@@ -13,6 +13,7 @@ LDFLAGS+=$(ARCHFLAGS)
 
 CC=$(PREFIX)gcc
 LD=$(PREFIX)gcc
+GDB=$(PREFIX)gdb
 OBJCOPY=$(PREFIX)objcopy
 SIZE=$(PREFIX)size
 RM=rm -f
@@ -50,6 +51,8 @@ load: all
 	./load_fw.sh $(TOOLCHAIN)
 dfu: all
 	dfu-util -a 0 --dfuse-address 0x08000000 -D $(TARGET).bin
+bmp: all
+	$(GDB) --batch --command=runme_bmp.gdb 
 
 clean:
 	$(RM) $(TARGET_OBJ) $(TARGET).srec $(TARGET).elf $(TARGET).bin $(TARGET).map $(USER_ASM_OBJ) $(USER_OBJ) $(USER_DEPS) $(TARGET_DEPS)
