@@ -22,8 +22,7 @@ TARGET=tm4c_launchpad_basic_app
 
 SRC=$(wildcard $(ATHENA_PATH)/arch/tivaware_tm4c/driverlib/*.c)
 ASM_SRC=$(wildcard $(ATHENA_PATH)/arch/tivaware_tm4c/driverlib/*.s)
-USER_SRC=startup_gcc.c
-USER_SRC+=$(wildcard user_source/*.c)
+USER_SRC=$(wildcard user_source/*.c)
 USER_SRC+=$(wildcard user_source/hal_interface/*.c)
 USER_ASM_SRC=$(wildcard user_source/*.s)
 
