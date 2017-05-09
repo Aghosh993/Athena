@@ -1,7 +1,7 @@
 /** @file can.h
 *   @brief CAN Driver Header File
-*   @date 02-Mar-2016
-*   @version 04.05.02
+*   @date 08-Feb-2017
+*   @version 04.06.01
 *   
 *   This file contains:
 *   - Definitions
