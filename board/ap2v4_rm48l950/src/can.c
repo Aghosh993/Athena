@@ -674,6 +674,25 @@ void canInit(void)
     canREG3->IF2CMD  = (uint8) 0xF8U;
     canREG3->IF2NO   = 10U;
 
+    /** - Initialize message 11 
+    *     - Wait until IF1 is ready for use 
+    *     - Set message mask
+    *     - Set message control word
+    *     - Set message arbitration
+    *     - Set IF1 control byte
+    *     - Set IF1 message number
+    */
+    /*SAFETYMCUSW 28 D MR:NA <APPROVED> "Potentially infinite loop found - Hardware Status check for execution sequence" */
+    while ((canREG3->IF1STAT & 0x80U) ==0x80U)
+    { 
+    } /* Wait */
+
+    canREG3->IF1MSK  = 0xC0000000U | (uint32)((uint32)((uint32)0x000007FFU & (uint32)0x000007FFU) << (uint32)18U);
+    canREG3->IF1ARB  = (uint32)0x80000000U | (uint32)0x00000000U | (uint32)0x00000000U | (uint32)((uint32)((uint32)11U & (uint32)0x000007FFU) << (uint32)18U);
+    canREG3->IF1MCTL = 0x00001000U | (uint32)0x00000400U | (uint32)0x00000000U | (uint32)0x00000000U | (uint32)8U;
+    canREG3->IF1CMD  = (uint8) 0xF8U;
+    canREG3->IF1NO   = 11U;
+
     /** - Initialize message 13 
     *     - Wait until IF1 is ready for use 
     *     - Set message mask
