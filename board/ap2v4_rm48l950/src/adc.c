@@ -1,7 +1,7 @@
 /** @file adc.c
 *   @brief ADC Driver Source File
-*   @date 02-Mar-2016
-*   @version 04.05.02
+*   @date 08-Feb-2017
+*   @version 04.06.01
 *
 *   This file contains:
 *   - API Functions
@@ -106,7 +106,7 @@ void adcInit(void)
                    | (uint32)ADC1_EVENT;
 
     /** - Setup event group sample window */
-    adcREG1->EVSAMP = 1U;
+    adcREG1->EVSAMP = 0U;
 
     /** - Setup event group sample discharge
     *     - Setup discharge prescaler
@@ -121,9 +121,9 @@ void adcInit(void)
     *     - Enable/Disable continuous conversion
     */
     adcREG1->GxMODECR[1U] = (uint32)ADC_12_BIT
+                          | (uint32)0x00000020U
                           | (uint32)0x00000000U
-                          | (uint32)0x00000000U
-                          | (uint32)0x00000000U;
+                          | (uint32)0x00000002U;
 
     /** - Setup group 1 hardware trigger
      *     - Setup hardware trigger edge
@@ -133,7 +133,7 @@ void adcInit(void)
                    | (uint32)ADC1_EVENT;
 
     /** - Setup group 1 sample window */
-    adcREG1->G1SAMP = 1U;
+    adcREG1->G1SAMP = 0U;
 
     /** - Setup group 1 sample discharge
     *     - Setup discharge prescaler
@@ -160,7 +160,7 @@ void adcInit(void)
                    | (uint32)ADC1_EVENT;
 
     /** - Setup group 2 sample window */
-    adcREG1->G2SAMP = 1U;
+    adcREG1->G2SAMP = 0U;
 
     /** - Setup group 2 sample discharge
     *     - Setup discharge prescaler
@@ -231,7 +231,7 @@ void adcInit(void)
                    | (uint32)ADC2_EVENT;
 
     /** - Setup event group sample window */
-    adcREG2->EVSAMP = 1U;
+    adcREG2->EVSAMP = 0U;
 
     /** - Setup event group sample discharge
     *     - Setup discharge prescaler
@@ -259,7 +259,7 @@ void adcInit(void)
 
 
     /** - Setup group 1 sample window */
-    adcREG2->G1SAMP = 1U;
+    adcREG2->G1SAMP = 0U;
 
     /** - Setup group 1 sample discharge
     *     - Setup discharge prescaler
@@ -286,7 +286,7 @@ void adcInit(void)
                    | (uint32)ADC2_EVENT;
 
     /** - Setup group 2 sample window */
-    adcREG2->G2SAMP = 1U;
+    adcREG2->G2SAMP = 0U;
 
     /** - Setup group 2 sample discharge
     *     - Setup discharge prescaler
@@ -361,28 +361,28 @@ static const uint32 s_adcSelect[2U][3U] =
     0x00000000U |
     0x00000000U |
     0x00000000U,
+    0x00000001U |
+    0x00000002U |
+    0x00000004U |
+    0x00000008U |
+    0x00000000U |
+    0x00000000U |
+    0x00000000U |
+    0x00000080U |
+    0x00000000U |
+    0x00000200U |
+    0x00000400U |
     0x00000000U |
     0x00000000U |
     0x00000000U |
     0x00000000U |
     0x00000000U |
-    0x00000000U |
-    0x00000000U |
-    0x00000000U |
-    0x00000000U |
-    0x00000000U |
-    0x00000000U |
-    0x00000000U |
-    0x00000000U |
-    0x00000000U |
-    0x00000000U |
-    0x00000000U |
-    0x00000000U |
-    0x00000000U |
-    0x00000000U |
-    0x00000000U |
-    0x00000000U |
-    0x00000000U |
+    0x00010000U |
+    0x00020000U |
+    0x00040000U |
+    0x00080000U |
+    0x00100000U |
+    0x00200000U |
     0x00000000U |
     0x00000000U,
     0x00000000U |
@@ -463,7 +463,7 @@ static const uint32 s_adcSelect[2U][3U] =
 static const uint32 s_adcFiFoSize[2U][3U] =
 {
     {16U,
-    16U,
+    13U,
     16U},
     {16U,
     16U,
@@ -767,7 +767,7 @@ void adcCalibration(adcBASE_t *adc)
     backup_mode = adc->OPMODECR;
 
     /** - Enable 12-BIT ADC  */
-    adcREG1->OPMODECR |= 0x80000000U;
+    adc->OPMODECR |= 0x80000000U;
 
     /* Disable all channels for conversion */
     adc->GxSEL[0U]=0x00U;
@@ -871,7 +871,7 @@ uint32 adcMidPointCalibration(adcBASE_t *adc)
     backup_mode = adc->OPMODECR;
 
     /** - Enable 12-BIT ADC  */
-    adcREG1->OPMODECR |= 0x80000000U;
+    adc->OPMODECR |= 0x80000000U;
 
     /* Disable all channels for conversion */
     adc->GxSEL[0U]=0x00U;

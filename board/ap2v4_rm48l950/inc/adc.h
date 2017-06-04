@@ -1,7 +1,7 @@
 /** @file adc.h
 *   @brief ADC Driver Header File
-*   @date 02-Mar-2016
-*   @version 04.05.02
+*   @date 08-Feb-2017
+*   @version 04.06.01
 *   
 *   This file contains:
 *   - Definitions
@@ -233,7 +233,7 @@ typedef struct adc_config_reg
 #define ADC1_CLOCKCR_CONFIGVALUE		(4U)
 
 #define ADC1_G0MODECR_CONFIGVALUE		((uint32)ADC_12_BIT | (uint32)0x00000000U | (uint32)0x00000000U)
-#define ADC1_G1MODECR_CONFIGVALUE		((uint32)ADC_12_BIT | (uint32)0x00000000U | (uint32)0x00000000U | (uint32)0x00000000U)
+#define ADC1_G1MODECR_CONFIGVALUE		((uint32)ADC_12_BIT | (uint32)0x00000020U | (uint32)0x00000000U | (uint32)0x00000002U)
 #define ADC1_G2MODECR_CONFIGVALUE		((uint32)ADC_12_BIT | (uint32)0x00000000U | (uint32)0x00000000U | (uint32)0x00000000U)
 
 #define ADC1_G0SRC_CONFIGVALUE 			((uint32)0x00000000U | (uint32)ADC1_EVENT)
@@ -243,9 +243,9 @@ typedef struct adc_config_reg
 #define ADC1_BNDCR_CONFIGVALUE			((uint32)((uint32)8U << 16U)|(8U + 8U))
 #define ADC1_BNDEND_CONFIGVALUE			(2U)
 
-#define ADC1_G0SAMP_CONFIGVALUE			(1U)
-#define ADC1_G1SAMP_CONFIGVALUE			(1U)
-#define ADC1_G2SAMP_CONFIGVALUE			(1U)
+#define ADC1_G0SAMP_CONFIGVALUE			(0U)
+#define ADC1_G1SAMP_CONFIGVALUE			(0U)
+#define ADC1_G2SAMP_CONFIGVALUE			(0U)
 
 #define ADC1_G0SAMPDISEN_CONFIGVALUE	((uint32)((uint32)0U << 8U) | 0x00000000U)
 #define ADC1_G1SAMPDISEN_CONFIGVALUE	((uint32)((uint32)0U << 8U) | 0x00000000U)
@@ -267,9 +267,9 @@ typedef struct adc_config_reg
 #define ADC2_BNDCR_CONFIGVALUE			((uint32)((uint32)8U << 16U)|(8U + 8U))
 #define ADC2_BNDEND_CONFIGVALUE			(2U)
 
-#define ADC2_G0SAMP_CONFIGVALUE			(1U)
-#define ADC2_G1SAMP_CONFIGVALUE			(1U)
-#define ADC2_G2SAMP_CONFIGVALUE			(1U)
+#define ADC2_G0SAMP_CONFIGVALUE			(0U)
+#define ADC2_G1SAMP_CONFIGVALUE			(0U)
+#define ADC2_G2SAMP_CONFIGVALUE			(0U)
 
 #define ADC2_G0SAMPDISEN_CONFIGVALUE	((uint32)((uint32)0U << 8U) | 0x00000000U)
 #define ADC2_G1SAMPDISEN_CONFIGVALUE	((uint32)((uint32)0U << 8U) | 0x00000000U)
