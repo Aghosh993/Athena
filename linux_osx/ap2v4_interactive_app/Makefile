@@ -1,7 +1,7 @@
 # Based on https://github.com/sergioprado/bare-metal-arm/blob/master/Makefile
 # But heavily-edited for our purposes:
 # (c) Abhimanyu Ghosh, 2016
-ATHENA_PATH=../..
+ATHENA_PATH=athroot
 TOOLCHAIN_ROOT=$(ATHENA_PATH)/arm-none-eabi-gcc_5_4_BE/gcc-arm-none-eabi-5_4-2017q1_BE_LINUX
 TOOLCHAIN=$(TOOLCHAIN_ROOT)/bin/
 JLINK_PATH=../../../JLink_Linux_V480_x86_64
