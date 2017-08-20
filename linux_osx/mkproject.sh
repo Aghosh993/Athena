@@ -5,6 +5,7 @@ if [ $# -eq 0 ]
 		echo "Example: ./mkproject.sh foo F3 --> Make an F3 Discovery project named foo."
 		echo "Available platforms:"
 		echo "f0: STM32 F0 Discovery"
+		echo "f0rtos: STM32 F0 Discovery FreeRTOS"
 		echo "f3: STM32 F3 Discovery"
 		echo "f4: STM32 F4 Discovery"
 		echo "tm4c: Tiva TM4C Launchpad with TM4C123Gx"
@@ -20,6 +21,11 @@ PROJ_PLATFORM=$2
 if [ "$2" = "F0" ] || [ "$2" = "f0" ]; then
 	echo "Creating F0 Discovery project..."
 	BASE_PROJ_NAME=f0discovery_basic_app
+fi
+
+if [ "$2" = "F0RTOS" ] || [ "$2" = "f0rtos" ]; then
+	echo "Creating F0 Discovery project with FreeRTOS kernel..."
+	BASE_PROJ_NAME=f0discovery_freertos_app
 fi
 
 if [ "$2" = "F3" ] || [ "$2" = "f3" ]; then

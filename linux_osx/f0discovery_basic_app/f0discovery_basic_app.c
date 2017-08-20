@@ -1,6 +1,6 @@
 /*
 	This is the main user software application
-	In this case, we have below the code necessary to toggle a set of LEDs on a	STM32 F3 Discovery PCB at 20 Hz.
+	In this case, we have below the code necessary to toggle a set of LEDs on a	STM32 F0 Discovery board.
 
 	(c) Abhimanyu Ghosh, 2017
  */

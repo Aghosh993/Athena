@@ -1,6 +1,7 @@
 /*
 	This is the main user software application
-	In this case, we have below the code necessary to toggle a set of LEDs on a	STM32 F4 Discovery PCB at 20 Hz.
+	In this case, we have below the code necessary to toggle a set of LEDs on a	STM32 F4 Discovery PCB at 20 Hz,
+  using the older Standard Peripheral HAL (Hardware Abstraction Layer).
 
 	(c) Abhimanyu Ghosh, 2017
  */
