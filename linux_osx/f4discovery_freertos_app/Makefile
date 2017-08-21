@@ -17,7 +17,7 @@ OBJCOPY=$(PREFIX)objcopy
 SIZE=$(PREFIX)size
 RM=rm -f
 
-TARGET=f4discovery_basic_app
+TARGET=f4discovery_freertos_app
 
 SRC=$(wildcard $(ATHENA_PATH)/arch/stm32/f4/src/*.c)
 SRC+=$(wildcard $(ATHENA_PATH)/arch/stm32/f4/src/CMSIS/*.c)

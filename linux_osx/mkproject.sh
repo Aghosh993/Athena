@@ -8,6 +8,7 @@ if [ $# -eq 0 ]
 		echo "f0rtos: STM32 F0 Discovery FreeRTOS"
 		echo "f3: STM32 F3 Discovery"
 		echo "f4: STM32 F4 Discovery"
+		echo "f4rtos: STM32 F4 Discovery FreeRTOS"
 		echo "tm4c: Tiva TM4C Launchpad with TM4C123Gx"
 		echo "ap2v4: Hercules Autopilot 2.4 project with RM48x MCU"
 		echo "f3_stdperiph: STM32 F3 Discovery project using the legacy Standard Peripheral Library from STMicroelectronics [NOT TESTED YET]"
@@ -41,6 +42,11 @@ fi
 if [ "$2" = "F4" ] || [ "$2" = "f4" ]; then
 	echo "Creating F4 Discovery project..."
 	BASE_PROJ_NAME=f4discovery_basic_app
+fi
+
+if [ "$2" = "F4RTOS" ] || [ "$2" = "f4rtos" ]; then
+	echo "Creating F4 Discovery project with FreeRTOS kernel..."
+	BASE_PROJ_NAME=f4discovery_freertos_app
 fi
 
 if [ "$2" = "F4_STDPERIPH" ] || [ "$2" = "f4_stdperiph" ]; then
