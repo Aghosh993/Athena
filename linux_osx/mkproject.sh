@@ -93,7 +93,7 @@ fi
 
 PROJ_BASE_NAME=`basename $PROJ_NAME`
 # ATHENA_RELPATH=`realpath --relative-to=$PROJ_NAME ..`
-ATHENA_RELPATH=`python2 -c "import os.path; print os.path.relpath('..', '$PROJ_NAME')"`
+ATHENA_RELPATH=`python2 -c "import os.path; print os.path.relpath('..', '$PROJ_NAME')"` 
 
 echo "Creating project with name:"
 echo $PROJ_BASE_NAME
