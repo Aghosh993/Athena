@@ -5,6 +5,16 @@ before_install:
 
 env: 
  - TARGET=f0
+ - TARGET=f0rtos
  - TARGET=f1
+ - TARGET=f3
+ - TARGET=f3_stdperiph
+ - TARGET=f3rtos
+ - TARGET=f4
+ - TARGET=f4_stdperiph
+ - TARGET=f4rtos
+ - TARGET=tm4c
+ - TARGET=ap2v4
+ - TARGET=ap2v4_shell
 
 script: cd linux_osx && ./mkproject.sh ../../test $TARGET && cd ../../test && make
