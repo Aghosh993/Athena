@@ -1,5 +1,8 @@
 language: c
 
+before_install:
+  - sudo apt-get install realpath
+
 env: 
  - TARGET=f0
  - TARGET=f1
