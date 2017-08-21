@@ -1,5 +1,7 @@
 # Athena Build System
 
+[![Build Status](https://travis-ci.org/Aghosh993/Athena.svg?branch=master)](https://travis-ci.org/Aghosh993/Athena)
+
 ## Intent
 
 This is the Athena build system, which targets a variety of ARM development boards and APIs. It currently supports Windows, Mac OS X and Linux, though any OS with POSIX compatibility and the GNU toolchain should work. Mac and Windows support are currently in process of testing, while the Linux support currently has been tested.
