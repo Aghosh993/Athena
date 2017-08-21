@@ -1,0 +1,7 @@
+language: c
+
+env: 
+ - TARGET=f0
+ - TARGET=f1
+
+script: cd linux_osx && ./mkproject.sh ../../$TARGET_test $TARGET && cd ../../$TARGET_test && make
