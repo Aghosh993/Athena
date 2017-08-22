@@ -10,6 +10,10 @@ This is the Athena build system, which targets a variety of ARM development boar
 
 This build system is heavily-based on my prior work in the EL6483_EmbeddedSystems repository on my Github account, which can be viewed at https://github.com/Aghosh993/EL6483_EmbeddedSystems
 
+A set of standard "template" apps are provided in the linux_osx folder. These apps are complete with linker scripts, startup code, Makefile and target-specific load scripts that have at least been tested under a Linux-based environment. While the firmware build process should work nominally on any platform that supports GNU Make, Bash and Python 2 (i.e. Linux/BSD/OS X/Windows with MSYS2 or Cygwin), your mileage may vary when attempting to use the load targets as those rely upon hardware access to whatever debugger is being used. In addition, the firmware builds may be performed in Docker (please refer to the .travis.yml file in this repo root for details of dependencies required.)
+
+The typical build process involves creating a new app in some target folder, and specifying the template to use for the new app. The scripts in this repo will then copy over the template and reconfigure the Makefile and loader scripts with the updated target names and relative paths.
+
 ## Prerequisites
 
 The majority of supported hardware platforms on this repo assume the availability of openocd if you intend to use the "make load" target to flash your board. OpenOCD can be either pre-installed by your package manager, or (preferred) installed via the "setup.sh" script located in "linux_osx/setup_scripts" here. That script fetches a specific version of OpenOCD tested to work the the ST-Link and TM4C Launchpad, and compiles it from source and installs it to your system.
