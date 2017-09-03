@@ -1136,6 +1136,7 @@ HAL_StatusTypeDef HAL_PCD_EP_Transmit(PCD_HandleTypeDef *hpcd, uint8_t ep_addr, 
   ep->is_in = 1U;
   ep->num = ep_addr & 0x7FU;
   
+  HAL_NVIC_DisableIRQ(USB_IRQn);
   __HAL_LOCK(hpcd); 
   
   /*Multi packet transfer*/
@@ -1174,6 +1175,7 @@ HAL_StatusTypeDef HAL_PCD_EP_Transmit(PCD_HandleTypeDef *hpcd, uint8_t ep_addr, 
   PCD_SET_EP_TX_STATUS(hpcd->Instance, ep->num, USB_EP_TX_VALID)
   
   __HAL_UNLOCK(hpcd);
+  HAL_NVIC_EnableIRQ(USB_IRQn);
      
   return HAL_OK;
 }
